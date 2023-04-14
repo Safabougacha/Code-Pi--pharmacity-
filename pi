@@ -1,0 +1,1778 @@
+# farah
+def Commande_client(Clients,TVA,Articles,Referance,Quantite,Prix_unitaire,Mode_de_reglement):
+    print('clients: ', Clients)
+    print('TVA: ',TVA)
+    print('articles: ',Articles)
+    print('Numéro de referance: ',Referance)
+    print('quantité: ',Quantite)
+    print('prix unitaire: ',Prix_unitaire)
+    print('mode de réglement: ',Mode_de_reglement)
+    print ("si vous voulez modifier ou ajouter un client tapez 1 ")
+    print ("si vous voulez modifier ou ajouter le numéro de TVA tapez 2 ")
+    print ("si vous voulez modifier ou ajouter un article tapez 3 ")
+    print ("si vous voulez modifier ou ajouter le numéro de réfèrence tapez 4 ")
+    print ("si vous voulez modifier ou ajouter la quantité tapez 5 ")
+    print ("si vous voulez modifier ou ajouter le prix unitaire tapez 6 ")
+    print ("si vous voulez modifier ou ajouter le mode de réglement tapez 7 ")    
+    choix_commande=(int(input("donner votre choix: ")))
+    
+    while (choix_commande>7)and (choix_commande<1):
+          choix_commande=(int(input("donner votre choix: ")))
+    if choix_commande==1:
+         remplir_tableau_en_nom(Clients)  
+    if choix_commande==2:
+         remplir_tableau_en_chiffre(TVA)
+    if choix_commande==3:
+         remplir_tableau_en_nom(Articles)
+    if choix_commande==4:
+         remplir_tableau_en_chiffre(Referance)
+    if choix_commande==5:
+         remplir_tableau_en_chiffre(Quantite)
+    if choix_commande==6:
+         remplir_tableau_en_chiffre(Prix_unitaire)
+    elif choix_commande==7:
+         remplir_tableau_en_nom(Mode_de_reglement)
+
+def remplir_tableau_en_chiffre(Tableau):
+    remplir=float(input('donner le chiffre: '))
+    Tableau.append(remplir)
+
+def remplir_tableau_en_nom(Tableau):
+    remplir=(input('donner le nom: '))
+    Tableau.append(remplir)
+   
+   
+def consulter_commande_Par_client(choix_client):
+    choix_client=(input(('donner client que vous cherchez: ')))  
+    position_client = Clients.index(choix_client)
+    print('ce que vous cherchez est à la position= ',position_client)
+    print('Clients= ',Clients[position_client])
+    print('numéro de TVA= ',TVA[position_client])
+    print('Articles= ',Articles[position_client])
+    print('Numéro de réfèrance= ',Referance[position_client])
+    print('Quantité= ',Quantite[position_client])
+    print('Prix unitaire= ',Prix_unitaire[position_client])
+    print('Mode de réglement= ',Mode_de_reglement[position_client])
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    f=open('client.txt','a')
+    f.write('la commande par client est:')
+    f.write('\n')
+    f.write('clients:')
+    f.write(str(Clients[position_client]))
+    f.write('\n')
+    f.write('TVA:')
+    f.write(str(TVA[position_client]))
+    f.write('\n')
+    f.write('articles:')
+    f.write(str(Articles[position_client]))
+    f.write('\n')
+    f.write('réfèrance:')
+    f.write(str(Referance[position_client]))
+    f.write('\n')
+    f.write('quantité:')
+    f.write(str(Quantite[position_client]))
+    f.write('\n')
+    f.write('Prix unitaire:')
+    f.write(str(Prix_unitaire[position_client]))
+    f.write('\n')
+    f.write('mode de réglement:')
+    f.write(str(Mode_de_reglement[position_client]))
+    f.write('\n')
+    f = open('client.txt','r')
+    f.close()
+
+def modifier_tableau_en_chiffre(tableau):
+    valeur_a_modifier=int(input('donner le numero de la ligne à modifier: '))
+    nouvelle_valeur=float(input('donner la nouvelle valeur: '))
+    tableau[valeur_a_modifier]=nouvelle_valeur
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+   
+def modifier_tableau_nom(tableau):
+    valeur_a_modifier=int(input('donner le numero de la ligne à modifier: '))
+    nouvelle_valeur=(input('donner le nouveau nom: '))
+    tableau[valeur_a_modifier]=nouvelle_valeur
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+   
+ 
+def principale_c_c():  
+    choix='a'  
+    while choix!='v' and choix!='f' and choix!='m' and choix!='t' :
+          print('Si vous voulez continuez tapez v')
+          print('Si vous voulez sortir tapez f')
+          print('Si vous voulez modifier quelque chose tapez m')
+          print("Si vous voulez consultez la commande d'un client tapez t")
+          print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+          choix=input('donner votre choix: ')
+    if choix=='v':
+        Commande_client(Clients,TVA,Articles,Referance,Quantite,Prix_unitaire,Mode_de_reglement)
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        f=open('client.txt','a')
+        f.write('la commande est:')
+        f.write('\n')
+        f.write('clients:')
+        f.write(str(Clients))
+        f.write('\n')
+        f.write('TVA:')
+        f.write(str(TVA))
+        f.write('\n')
+        f.write('articles:')
+        f.write(str(Articles))
+        f.write('\n')
+        f.write('réfèrance:')
+        f.write(str(Referance))
+        f.write('\n')
+        f.write('quantité:')
+        f.write(str(Quantite))
+        f.write('\n')
+        f.write('Prix unitaire:')
+        f.write(str(Prix_unitaire))
+        f.write('\n')
+        f.write('mode de réglement:')
+        f.write(str(Mode_de_reglement))
+        f.write('\n')
+        f = open('client.txt','r')
+        f.close()
+        principale_c_c()
+   
+    elif choix=='f':
+        print('_-_-_-_-_-_-_ fin _-_-_-_-_-_-_-')
+   
+    elif choix=='t':
+        consulter_commande_Par_client(choix_client)
+        principale_c_c()
+    elif choix=='m':
+            print('si vous voulez modifiez client tapez 1 ')
+            print('si vous voulez modifiez TVA tapez 2')
+            print('si vous voulez modifiez article tapez 3 ')
+            print('si vous voulez modifiez réfèrance tapez 4')
+            print('si vous voulez modifiez quantité tapez 5')
+            print('si vous voulez modifiez prix unitaire tapez 6')
+            print('si vous voulez modifiez mode de réglement tapez 7')
+            print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+            choix_modification=int(input('donner votre choix: '))
+            if choix_modification==1:
+                modifier_tableau_nom(Clients)
+                print(Clients)
+                print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+               
+            if choix_modification==2:
+                modifier_tableau_nom(TVA)
+                print(TVA)
+                print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+               
+            if choix_modification==3:
+                modifier_tableau_nom(Articles)
+                print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+            if choix_modification==4:
+                modifier_tableau_en_chiffre(Referance)  
+                print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+            if choix_modification==5:
+                modifier_tableau_nom(Quantite)
+                print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+            if choix_modification==6:
+                modifier_tableau_en_chiffre(Prix_unitaire)
+                print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+            if choix_modification==7:
+                  modifier_tableau_nom(Mode_de_reglement)  
+                  print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+            f=open('client.txt','w')
+            f.write('la commande modifiée est:')
+            f.write('\n')
+            f.write('clients:')
+            f.write(str(Clients))
+            f.write('\n')
+            f.write('TVA:')
+            f.write(str(TVA))
+            f.write('\n')
+            f.write('articles:')
+            f.write(str(Articles))
+            f.write('\n')
+            f.write('réfèrance:')
+            f.write(str(Referance))
+            f.write('\n')
+            f.write('quantité:')
+            f.write(str(Quantite))
+            f.write('\n')
+            f.write('Prix unitaire:')
+            f.write(str(Prix_unitaire))
+            f.write('\n')
+            f.write('mode de réglement:')
+            f.write(str(Mode_de_reglement))
+            f.write('\n')
+            f = open('client.txt','r')
+            f.close()
+            principale_c_c()
+            print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+def client():
+    print('Si vous voulez consultez les coordonnées du client tapez 0')
+    print('Si vous voulez modifier les coordonnées du client tapez 1')
+    choix_specifique=int(input('Votre choix est :'))
+    while   (choix_specifique>1) and (choix_specifique<0):
+        choix_specifique=int(input('Votre choix est :'))
+    if  choix_specifique==0:
+        consultez_coordonnées_du_client(liste_client)
+    elif choix_specifique==1:
+        modifier_coordonnées_du_client(liste_client)
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+   
+def  consultez_coordonnées_du_client(liste_client):              
+    nom_du_client=input('donner le nom du client que vous voulez consultez :')
+    for i in range(0,len(liste_client)) :
+        for j in range (0,5) :
+            if liste_client[i][j]==nom_du_client:
+                print(liste_client[i])
+               
+    if len(liste_client)!=0:
+              print('la liste aprés consultation est devenu: ',liste_client)
+    else:
+        print('Nom inexixstant')
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    f=open('client.txt','a')
+    f.write('le client cherché est')
+    f.write(str(liste_client[i]))
+    f.write('\n')
+    f = open('client.txt','r')
+    f.close()
+   
+
+def modifier_coordonnées_du_client(liste_client):
+    nom_du_client=input('donner le nom du client que vous voulez modifiez :')
+    print('Si vous voulez modifier le nom tapez 0')
+    print('Si vous voulez modifier le prénom tapez 1')
+    print('Si vous voulez modifier le télèphone tapez 2')
+    print('Si vous voulez modifier le Email tapez 3')
+    print('Si vous voulez modifier adresse tapez 4')
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    choix_de_modification=int(input('Votre choix est: '))
+    while   (choix_de_modification>4) and (choix_de_modification<0):
+        choix_de_modification=int(input('Votre choix est: '))
+    for i in range(0,len(liste_client)) :
+          for j in range (0,5) :
+              if liste_client[i][j]==nom_du_client:
+                  if choix_de_modification==0:
+                      Nom=input('donner le nom :')
+                      liste_client[i][0]=Nom
+                      print('le client modifié est devenu:',liste_client[i])
+                  elif choix_de_modification==1:
+                      prenom=input('donner le prénom :')
+                      liste_client[i][1]=prenom
+                      print('le client modifié est devenu:',liste_client[i])
+                  elif choix_de_modification==2:
+                      Telephone=(input('Donner le télèphone :'))
+                      while len(Telephone)!=8:
+                          Telephone=(input('Donner le télèphone  :'))
+                      liste_client[i][2]=Telephone
+                      print('le client modifié est devenu:',liste_client[i])
+                  elif choix_de_modification==3:
+                      Email=input('Donner le email  :')
+                     
+                      verif=Email.find('@')
+                      while verif==-1:
+                          Email=input('Donner le email  :')
+                          verif=Email.find('@')
+                      liste_client[i][3]=Email
+                      print('le client modifié est devenu:',liste_client[i])
+                  elif choix_de_modification==4:
+                      Adresse=input('adresse :')
+                      liste_client[i][4]=Adresse
+                      print('le client modifié est devenu:',liste_client[i])
+    if len(liste_client)!=0:
+        print('la liste aprés modification est devenu: ',liste_client)
+    else:
+            print('Nom inexixstant')
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    f=open('client.txt','w')
+    f.write('le client modifié est devenu:')
+    f.write(str(liste_client[i]))
+    f.write('\n')
+    f = open('client.txt','r')
+    f.close()
+ 
+   
+
+def ajoutez_un_client(liste_client):  
+    n=int(input('Combien de clients vous voulez ajoutez: '))
+    while n<=0:
+        n=int(input('Combien de clients vous voulez ajoutez: '))
+    for k in range(0,n):
+        for i in range(0,1) :
+            Ligne=[]
+            for j in range (0,1) :
+                Nom=input('Donner le nom à ajoutez :')
+                Prenom=input('Donner le prénom à ajoutez :')
+                Telephone=(input('Donner le télèphone à ajoutez :'))
+                while len(Telephone)!=8:
+                    Telephone=(input('Donner le télèphone à ajoutez :'))
+                Email=input('Donner le email à ajoutez :')
+               
+                verif=Email.find('@')
+                while verif==-1:
+                    Email=input('Donner le email à ajoutez :')
+                    verif=Email.find('@')
+                Adresse=input("Donner l'adresse à ajoutez :")
+                Ligne.append(Nom)
+                Ligne.append(Prenom)
+                Ligne.append(Telephone)
+                Ligne.append(Email)
+                Ligne.append(Adresse)
+                print(Ligne)
+        liste_client.append(Ligne)
+        print('la liste clients aprés ajout est devenue :',liste_client)
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    f=open('client.txt','a')
+    f.write('la liste clients aprés ajout est devenue :')
+    f.write(str(liste_client))
+    f.write('\n')
+    f = open('client.txt','r')
+    f.close()
+   
+       
+def supprimer_un_client(liste_client):
+    import numpy as np
+    nom_du_client=input('donner le nom du client que vous voulez supprimé : ')
+    for i in range(0,len(liste_client)) :
+          for j in range (0,5) :
+              if liste_client[i][j]==nom_du_client:
+                    liste_client_del = np.delete(liste_client,i,0)                            
+    if len(liste_client)!=0:
+          print('la liste aprés suppresssion est devenu: ',liste_client_del)
+    else:
+        print('introuvable')
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    f=open('client.txt','a')
+    f.write('liste clients avant suppresion:')
+    f.write(str(liste_client))
+    f.write('\n')
+    f.write('la liste clients suppresssion est devenu:')
+    f.write(str(liste_client_del))
+    f.write('\n')
+    f = open('client.txt','r')
+    f.close()
+
+def client_principale():
+    choix='a'
+    while choix!='v' and choix!='f' and choix!='m' and choix!='s' and choix!='c':
+          print('Si vous voulez continuez tapez v')
+          print('Si vous voulez sortir tapez f')
+          print('Si vous voulez choisir un client m')
+          print("Si vous voulez consultez la commande d'un client tapez c")
+          print('Si vous voulez supprimer un client tapez s')
+          print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+          choix=input('donner votre choix: ')
+    if choix=='v':
+        ajoutez_un_client(liste_client)
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        client_principale()
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    elif choix=='f':
+        print('_-_-_-_-_-_-_ fin _-_-_-_-_-_-_-')
+    elif choix=='c':
+        Commande_client(Clients,TVA,Articles,Referance,Quantite,Prix_unitaire,Mode_de_reglement)
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        principale_c_c()
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        client_principale()
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    elif choix=='m':
+        client()
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        client_principale()
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    elif choix=='s':
+        supprimer_un_client(liste_client)
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        client_principale()
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+# fin maissa 
+
+
+# def meryem 
+def Gestion_de_stock(Date,libelle,stock_entrant,montant_entrant,stock_sortant,montant_sortant):
+    
+    print("Dates= ",Date)
+    print("libellés= ",libelle)
+    print("Stock entrant= ",stock_entrant)
+    print("Montant entrant= ",montant_entrant)
+    print("Stock sortant= ",stock_sortant)
+    print("Montant sortant= ",montant_sortant)
+    print ("si vous voulez modifier ou ajouter la Date tapez 1 ")
+    print ("si vous voulez modifier ou ajouter les libelles tapez 2 ")
+    print ("si vous voulez modifier ou ajouter le stock entrant tapez 3  ")
+    print ("si vous voulez modifier ou ajouter les montants entrants tapez 4  ")
+    print ("si vous voulez modifier ou ajouter le stock sortant tapez 5: ")
+    print ("si vous voulez modifier ou ajouter les montants sortants tapez 6 ")
+
+
+
+def remplir_tableau_date(Tableau):
+    jour=int(input("donner le jour : "))
+    while jour==0 and jour>31:
+        jour=int(input("donner le jour : "))
+    mois=int(input('donner le mois: '))
+    while mois==0 and mois>12:
+        mois=int(input('donner le mois: '))
+    annee=(input("donner l'année: "))
+    while len(annee)!=4:
+        annee=(input("donner l'année: "))
+    date=[jour,mois,annee]
+    Tableau.append(date)
+
+
+
+    
+# recherche par date 
+def consulter_stock_Par_Date(choix_date):
+    
+        
+        mois_cherche=int(input("donner le mois que vous voulez consultez: ")) 
+        while mois_cherche==0 and mois_cherche>12:
+            mois_cherche=int(input("donner le mois que vous voulez consultez: "))
+        for i in range (0,len(Date)):
+            if Date[i][1]==mois_cherche:
+                # position_date = Date.index(mois_cherche)
+                print('ce que vous cherchez est à la position: ',i)
+                print('Date= ',Date[i])
+                print('libelle= ',libelle[i])
+                print('stock entrant= ',stock_entrant[i])
+                print('montant entrant= ',montant_entrant[i])
+                print('stock sortant= ',stock_sortant[i])
+                print('montant sortant= ',montant_sortant[i])
+            else:
+                print("introuvable")
+            print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+                
+
+
+    
+def consulter_stock_Par_libelle(choix_libelle):
+    tableau_affichage_consulting=[]
+    choix_libelle=(input(('donner le libelle que vous cherchez: ')))
+    for i in range(0,len(libelle)) :
+        if libelle[i]==choix_libelle:
+            tableau_affichage_consulting.append(i)
+            for j in tableau_affichage_consulting:
+                  print('ce que vous cherchez est à la position: ',j)
+                  print('Date= ',Date[j])
+        
+                  print('stock entrant= ',stock_entrant[j])
+                  print('montant entrant= ',montant_entrant[j])
+                  print('stock sortant= ',stock_sortant[j])
+                  print('montant sortant= ',montant_sortant[j])
+        else:
+            print('introuvable')
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        
+
+def Modifier_date(tableau):
+    valeur_a_modifier=int(input('donner le numero de la ligne à modifier: '))
+    tableau[valeur_a_modifier]=int(input('donner la nouvelle date: '))
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    
+   
+        
+
+def modifier_tableau_en_chiffre_(tableau):
+    valeur_a_modifier=int(input('donner le numero de la ligne à modifier: '))
+    nouvelle_valeur=float(input('donner la nouvelle valeur: '))
+    tableau[valeur_a_modifier]=nouvelle_valeur
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    
+
+    
+
+
+def principale_stock():
+    
+    choix='a'
+    
+    
+    while choix!='v' and choix!='f' and choix!='m' and choix!='t' and choix!='c' :
+          print('Si vous voulez continuez tapez v')
+          print('Si vous voulez sortir tapez f')
+          print('Si vous voulez modifier quelque chose tapez m')
+          print("Si vous voulez consultez la commande d'un client tapez t")
+          print("si vous voulez consultez les courbes tapez c")
+          print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+          choix=input('Donnez votre choix: ')
+    if choix=='v':
+        Gestion_de_stock(Date,libelle,stock_entrant,montant_entrant,stock_sortant,montant_sortant)
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        choix_gestion_stock=(int(input("donner votre choix: ")))
+        
+        
+        while (choix_gestion_stock>6)and (choix_gestion_stock==0):
+             choix_gestion_stock=(int(input("donner votre choix: ")))
+
+        if choix_gestion_stock==1:
+             remplir_tableau_date(Date)
+             
+        if choix_gestion_stock==2:
+             remplir_tableau_en_nom(libelle)
+        if choix_gestion_stock==3:
+             remplir_tableau_en_nom(stock_entrant)
+        if choix_gestion_stock==4:
+             remplir_tableau_en_chiffre(montant_entrant)
+        if choix_gestion_stock==5:
+             remplir_tableau_en_nom(stock_sortant)
+        elif choix_gestion_stock==6:
+             remplir_tableau_en_chiffre(montant_sortant)
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        principale_stock()
+   
+    
+    elif choix=='f':
+            print('_-_-_-_-_-_-_ fin _-_-_-_-_-_-_-')
+    
+    
+    elif choix=='t':
+         print('si vous voulez chercher selon la date tapez 1')
+         print('si vous voulez chercher selon le libelle tapez 2')
+         choix_consultation=int(input('donner votre choix: '))
+         while choix_consultation!=1 and choix_consultation!=2:
+             choix_consultation=int(input('donner votre choix: '))
+         if choix_consultation ==1:
+             consulter_stock_Par_Date(choix_date)
+             
+         if choix_consultation ==2:
+             consulter_stock_Par_libelle(choix_libelle)
+         print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+         principale_stock()
+    
+    
+    
+    
+    
+    
+    elif choix=='c':
+         
+        import matplotlib.pyplot as plt
+        
+        plt.pie(montant_entrant,       labels=stock_entrant,    autopct='%1.1f%%',startangle=90,shadow=True)
+        plt.axis('equal')
+        plt.show()
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        # courbe 2
+       
+        plt.pie(montant_sortant,       labels=stock_sortant,    autopct='%1.1f%%',startangle=90,shadow=True)
+        plt.axis('equal')
+        plt.show()
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        principale_stock() 
+     
+        
+     
+        
+    elif choix=='m':
+         print('si vous voulez modifiez la date tapez 1')
+         print('si vous voulez modifiez le libelle tapez 2')
+         print('si vous voulez modifiez le stock entrant tapez 3')
+         print('si vous voulez modifiez le montant entrant tapez 4')
+         print('si vous voulez modifiez le stock sortant tapez 5 ')
+         print('si vous voulez modifiez le montant sortant tapez 6')
+         print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+         choix_modification=int(input('donner choix de modification'))
+         if choix_modification==1:
+             Modifier_date(Date)
+             print(Date)
+           
+         if choix_modification==2:
+             modifier_tableau_nom(libelle)
+             print(libelle)
+           
+         if choix_modification==3:
+             modifier_tableau_nom(stock_entrant)
+         if choix_modification==4:
+             modifier_tableau_en_chiffre(montant_entrant)  
+         if choix_modification==5:
+             modifier_tableau_nom(stock_sortant)
+         if choix_modification==6:
+             modifier_tableau_en_chiffre(montant_sortant)
+         print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+         f=open('stock.txt','a')
+         f.write('fiche de stock est:')
+         f.write('\n')
+         f.write("Date:")
+         f.write(str(Date))
+         f.write('\n')
+         f.write('libelle:')
+         f.write(str(libelle))
+         f.write('\n')
+         f.write('stock entrant:')
+         f.write(str(stock_entrant))
+         f.write('\n')
+         f.write('montant_entrant:')
+         f.write(str(montant_entrant))
+         f.write('\n')
+         f.write('stock_sortant:')
+         f.write(str(stock_sortant))
+         f.write('\n')
+         f.write('montant_sortant:')
+         f.write(str(montant_sortant))
+         f.write('\n')
+         f = open('stock.txt','r')
+         f.close()
+         principale_stock()
+# Farah deffffff------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------
+def Commande_fournisseur(fournisseurs,TVA,Articles,Referance,Quantite,Prix_unitaire,Mode_de_reglement):  
+    print('fournisseurs: ', fournisseurs)
+    print('TVA: ',TVA)
+    print('articles: ',Articles)
+    print('Numéro de referance: ',Referance)
+    print('quantité: ',Quantite)
+    print('prix unitaire: ',Prix_unitaire)
+    print('mode de réglement: ',Mode_de_reglement)
+    print ("si vous voulez modifier ou ajouter un fournisseur tapez 1")
+    print ("si vous voulez modifier ou ajouter le numéro de TVA tapez 2")
+    print ("si vous voulez modifier ou ajouter un article tapez 3")
+    print ("si vous voulez modifier ou ajouter le numéro de réfèrance tapez 4")
+    print ("si vous voulez modifier ou ajouter la quantité tapez 5")
+    print ("si vous voulez modifier ou ajouter le prix unitaire tapez 6")
+    print ("si vous voulez modifier ou ajouter le mode de réglement tapez 7")
+    choix_commande=(int(input("donner votre choix: ")))
+    while (choix_commande>7)and (choix_commande<0):
+          choix_commande=(int(input("donner votre choix: ")))
+    if choix_commande==1:
+         remplir_tableau_en_nom(fournisseurs)
+         print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    if choix_commande==2:
+         remplir_tableau_en_chiffre(TVA)
+         print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    if choix_commande==3:
+         remplir_tableau_en_nom(Articles)
+         print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    if choix_commande==4:
+         remplir_tableau_en_chiffre(Referance)
+         print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    if choix_commande==5:
+         remplir_tableau_en_chiffre(Quantite)
+         print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    if choix_commande==6:
+         remplir_tableau_en_chiffre(Prix_unitaire)
+         print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    elif choix_commande==7:
+         remplir_tableau_en_nom(Mode_de_reglement)
+         print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+
+   
+   
+def consulter_commande_Par_fournisseur(choix_fournisseur):
+    choix_fournisseur=(input(('donner fournisseur que vous cherchez: ')))
+    position_fournisseur = fournisseurs.index(choix_fournisseur)
+    print('ce que vous cherchez est à la position',position_fournisseur)
+    print('Fournisseurs= ',fournisseurs[position_fournisseur])
+    print('numéro de TVA= ',TVA[position_fournisseur])
+    print('Articles= ',Articles[position_fournisseur])
+    print('Numéro de réfèrance= ',Referance[position_fournisseur])
+    print('Quantité= ',Quantite[position_fournisseur])
+    print('Prix unitaire= ',Prix_unitaire[position_fournisseur])
+    print('Mode de réglement= ',Mode_de_reglement[position_fournisseur])
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    f=open('fournisseur.txt','a')
+    f.write('la commande par fournisseur est:')
+    f.write('\n')
+    f.write('fournisseurs:')
+    f.write(str(fournisseurs[position_fournisseur]))
+    f.write('\n')
+    f.write('TVA:')
+    f.write(str(TVA[position_fournisseur]))
+    f.write('\n')
+    f.write('articles:')
+    f.write(str(Articles[position_fournisseur]))
+    f.write('\n')
+    f.write('réfèrance:')
+    f.write(str(Referance[position_fournisseur]))
+    f.write('\n')
+    f.write('quantité:')
+    f.write(str(Quantite[position_fournisseur]))
+    f.write('\n')
+    f.write('Prix unitaire:')
+    f.write(str(Prix_unitaire[position_fournisseur]))
+    f.write('\n')
+    f.write('mode de réglement:')
+    f.write(str(Mode_de_reglement[position_fournisseur]))
+    f.write('\n')
+    f = open('fournisseur.txt','r')
+    f.close()
+ 
+ 
+def principale_c_f():
+    choix='a'
+    while choix!='v' and choix!='f' and choix!='m' and choix!='t' :
+          print('Si vous voulez continuez tapez v')
+          print('Si vous voulez sortir tapez f')
+          print('Si vous voulez modifier quelque chose tapez m')
+          print("Si vous voulez consultez la commande d'un fournisseur tapez t")
+          choix=input('donner votre choix: ')
+    if choix=='v':
+        Commande_fournisseur(fournisseurs,TVA,Articles,Referance,Quantite,Prix_unitaire,Mode_de_reglement)  
+        f=open('fournisseur.txt','a')
+        f.write('la commande est:')
+        f.write('\n')
+        f.write('fournisseurs:')
+        f.write(str(fournisseurs))
+        f.write('\n')
+        f.write('TVA:')
+        f.write(str(TVA))
+        f.write('\n')
+        f.write('articles:')
+        f.write(str(Articles))
+        f.write('\n')
+        f.write('réfèrance:')
+        f.write(str(Referance))
+        f.write('\n')
+        f.write('quantité:')
+        f.write(str(Quantite))
+        f.write('\n')
+        f.write('Prix unitaire:')
+        f.write(str(Prix_unitaire))
+        f.write('\n')
+        f.write('mode de réglement:')
+        f.write(str(Mode_de_reglement))
+        f.write('\n')
+        f = open('fournisseur.txt','r')
+        f.close()
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        principale_c_f()
+   
+    elif choix=='f':
+        print('fin')
+   
+    elif choix=='t':
+        consulter_commande_Par_fournisseur(choix_fournisseur)
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        principale_c_f()
+    elif choix=='m':
+            print('si vous voulez modifiez fournisseur tapez 1 ')
+            print('si vous voulez modifiez TVA tapez 2')
+            print('si vous voulez modifiez article tapez 3 ')
+            print('si vous voulez modifiez réfèrnce tapez 4')
+            print('si vous voulez modifiez quantité tapez 5')
+            print('si vous voulez modifiez prix unitaire tapez 6')
+            print('si vous voulez modifiez mode de réglement tapez 7')
+            choix_modification=int(input('donner votre choix: '))
+            if choix_modification==1:
+                modifier_tableau_nom(fournisseurs)
+            if choix_modification==2:
+                modifier_tableau_nom(TVA)
+            if choix_modification==3:
+                modifier_tableau_nom(Articles)
+            if choix_modification==4:
+                modifier_tableau_en_chiffre(Referance)  
+            if choix_modification==5:
+                modifier_tableau_nom(Quantite)
+            if choix_modification==6:
+                modifier_tableau_en_chiffre(Prix_unitaire)  
+            if choix_modification==7:
+                  modifier_tableau_nom(Mode_de_reglement)
+            print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+            f=open('fournisseur.txt','w')
+            f.write('la commande modifiée est:')
+            f.write('\n')
+            f.write('fournisseurs:')
+            f.write(str(fournisseurs))
+            f.write('\n')
+            f.write('TVA:')
+            f.write(str(TVA))
+            f.write('\n')
+            f.write('articles:')
+            f.write(str(Articles))
+            f.write('\n')
+            f.write('réfèrance:')
+            f.write(str(Referance))
+            f.write('\n')
+            f.write('quantité:')
+            f.write(str(Quantite))
+            f.write('\n')
+            f.write('Prix unitaire:')
+            f.write(str(Prix_unitaire))
+            f.write('\n')
+            f.write('mode de réglement:')
+            f.write(str(Mode_de_reglement))
+            f.write('\n')
+            f = open('fournisseur.txt','r')
+            f.close()
+            principale_c_f()
+def fournisseur():
+    print('Si vous voulez consultez les coordonnées du fournisseurs tapez 0')
+    print('Si vous voulez modifier les coordonnées du fourisseurs tapez 1')
+    choix_specifique=int(input('Votre choix est :'))
+    while   (choix_specifique>1) and (choix_specifique<0):
+        choix_specifique=int(input('Votre choix est :'))
+    if  choix_specifique==0:
+        consultez_coordonnées_du_fournisseurs(liste_fournisseurs)
+    elif choix_specifique==1:
+        modifier_coordonnées_du_fournisseurs(liste_fournisseurs)
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+
+def  ajouter_fournisseur(liste_fournisseurs):
+    n=int(input('Combien de fournisseurs vous voulez ajouter: '))
+    while n<=0:
+        n=int(input('Combien de fournisseurs vous voulez ajouter: '))
+    for k in range(0,n):
+        for i in range(0,1) :
+            L=[]
+            for j in range (0,1) :
+                Nom=input('Donner le nom à ajoutez :')
+                Prenom=input('Donner le prénom à ajoutez :')
+                Telephone=(input('Donner le télèphone à ajoutez :'))
+                while len(Telephone)!=8:
+                    Telephone=(input('Donner le télèphone à ajoutez :'))
+                Email=input('Donner le email à ajoutez :')
+               
+                verif=Email.find('@')
+                while verif==-1:
+                    Email=input('Donner le email à ajoutez :')
+                    verif=Email.find('@')
+                Adresse=input("Donner l'adresse à ajoutez :")
+                L.append(Nom)
+                L.append(Prenom)
+                L.append(Telephone)
+                L.append(Email)
+                L.append(Adresse)
+                print(L)
+        liste_fournisseurs.append(L)
+        print('la liste fournisseurs aprés ajout est devenue:',liste_fournisseurs)  
+    f=open('fournisseur.txt','a')
+    f.write('la liste fournisseurs aprés ajout est devenue:')
+    f.write(str(liste_fournisseurs))
+    f.write('\n')
+    f = open('fournisseur.txt','r')
+    f.close()
+def supprimer_fournisseur(liste_fournisseurs):
+    import numpy as np
+    print('donner le nom du fournisseur ')
+    nom_du_fournisseur=input('donner le nom cherché :')
+    for i in range(0,len(liste_fournisseurs)) :
+         for j in range (0,5) :
+             if liste_fournisseurs[i][j]==nom_du_fournisseur:
+                   liste_fournisseurs_del = np.delete(liste_fournisseurs,i,0)
+    if len(liste_fournisseurs)!=0:
+         print(liste_fournisseurs_del)
+    else:
+        print('Nom introuvable')
+    f=open('fournisseur.txt','a')
+    f.write('liste fournisseurs avant suppresion:')
+    f.write(str(liste_fournisseurs))
+    f.write('\n')
+    f.write('la liste fournisseur aprés suppresssion est devenu:')
+    f.write(str(liste_fournisseurs_del))
+    f.write('\n')
+    f = open('fournisseur.txt','r')
+    f.close()
+
+def consultez_coordonnées_du_fournisseurs(liste_fournisseurs):
+   nom_du_fournisseur=input('donner le nom du fournisseur que vous voulez consultez :')
+   for i in range(0,len(liste_fournisseurs)) :
+       for j in range (0,5) :
+           if liste_fournisseurs[i][j]==nom_du_fournisseur:
+               print(liste_fournisseurs[i])
+   if len(liste_fournisseurs)!=0:
+              print('la liste des fournisseurs aprés consulation: ',liste_fournisseurs)
+   else:
+        print('Nom inexixstant')
+   f=open('fournisseur.txt','a')
+   f.write('le fournisseur cherché est')
+   f.write(str(liste_fournisseurs[i]))
+   f.write('\n')
+   f = open('fournisseur.txt','r')
+   f.close()  
+ 
+def modifier_coordonnées_du_fournisseurs(liste_fournisseurs):
+   nom_du_fournisseur=input('donner le nom du fournisseur :')
+   print('Si vous voulez modifier le nom tapez 0')
+   print('Si vous voulez modifier le prénom tapez 1')
+   print('Si vous voulez modifier le télèphone tapez 2')
+   print('Si vous voulez modifier le Email tapez 3')
+   print('Si vous voulez modifier adresse tapez 4')
+   choix_de_modification=int(input('Votre choix est:'))
+   while   choix_de_modification>=4:
+       choix_de_modification=int(input('Votre choix est:'))
+   for i in range(0,len(liste_fournisseurs)) :
+        for j in range (0,5) :
+            if liste_fournisseurs[i][j]==nom_du_fournisseur:
+                if choix_de_modification==0:
+                    Nom=input('donner le nom :')
+                    liste_fournisseurs[i][0]=Nom
+                    print('le fournisseur modifié est devenu:',liste_fournisseurs[i])
+                elif choix_de_modification==1:
+                    prenom=input('donner le prénom :')
+                    liste_fournisseurs[i][1]=prenom
+                    print('le fournisseur modifié est devenu:',liste_fournisseurs[i])
+                elif choix_de_modification==2:
+                    Telephone=(input('Donner le télèphone :'))
+                    while len(Telephone)!=8:
+                        Telephone=(input('Donner le télèphone  :'))
+                    liste_fournisseurs[i][2]=Telephone
+                    print('le fournisseur modifié est devenu:',liste_fournisseurs[i])
+                elif choix_de_modification==3:
+                   Email=input('Donner le email  :')
+                   
+                   verif=Email.find('@')
+                   while verif==-1:
+                       Email=input('Donner le email  :')
+                   liste_fournisseurs[i][3]=Email
+                   print('le fournisseur modifié est devenu:',liste_fournisseurs[i])
+                elif choix_de_modification==4:
+                    Adresse=input('adresse :')
+                    liste_fournisseurs[i][4]=Adresse
+                    print('le fournisseur modifié est devenu:',liste_fournisseurs[i])
+   if len(liste_fournisseurs)!=0:
+       print('la liste aprés modification est devenu :',liste_fournisseurs)
+   else:
+          print('Nom inexixstant')
+   f=open('fournisseur.txt','w')
+   f.write('le fournisseur modifié est devenu:')
+   f.write(str(liste_fournisseurs[i]))
+   f.write('\n')
+   f = open('fournisseur.txt','r')
+   f.close()
+ 
+def fs_principale():  
+    choix='a'
+    while choix!='v' and choix!='f' and choix!='m' and choix!='s' and choix!='c':
+          print('Si vous voulez continuez tapez v')
+          print('Si vous voulez sortir tapez f')
+          print('Si vous voulez choisir un fournisseur m')
+          print("Si vous voulez consultez la commande d'un fournisseur tapez c")
+          print('Si vous voulez supprimer un fournisseur s')
+          choix=input('donner votre choix: ')
+    if choix=='v':
+        ajouter_fournisseur(liste_fournisseurs)
+        fs_principale()    
+    elif choix=='f':
+        print('fin')
+    elif choix=='c':
+        Commande_fournisseur(fournisseurs,TVA,Articles,Referance,Quantite,Prix_unitaire,Mode_de_reglement)
+        principale_c_f()
+        fs_principale()
+    elif choix=='m':
+        fournisseur()
+        fs_principale()
+    elif choix=='s':
+        supprimer_fournisseur(liste_fournisseurs)
+        fs_principale()
+# def rh maissa 
+def ressource_humaine():
+    print('Si vous voulez consultez les coordonnées du employé tapez 0')
+    print('Si vous voulez modifier les coordonnées du employé tapez 1')
+    choix_specifique=int(input('Votre choix est :'))
+    while (choix_specifique>1) and (choix_specifique<0):
+        choix_specifique=int(input('Votre choix est :'))
+    if  choix_specifique==0:
+        consultez_coordonnees_du_employe(liste_employes)
+    elif choix_specifique==1:
+        modifier_coordonnées_du_employe(liste_employes)
+
+def consultez_coordonnees_du_employe(liste_employes):
+    nom_du_employe=input('donner le nom du employé que vous voulez consultez :')
+    for i in range(0,len(liste_employes)) :
+        for j in range (0,5) :
+            if liste_employes[i][j]==nom_du_employe:
+                print(liste_employes[i])
+    if len(liste_employes)!=0:
+              print("la liste des employés aprés consultation",liste_employes)
+    else:
+        print('Nom inexixstant')
+    f=open('RH.txt','a')
+    f.write("l'employé cherché est")
+    f.write(str(liste_employes[i]))
+    f.write('\n')
+    f = open('Rh.txt','r')
+    f.close()
+   
+   
+
+def modifier_coordonnées_du_employe(liste_employes):
+    nom_du_employe=input('donner le nom du employé :')
+    print('Si vous voulez modifier le nom tapez 0')
+    print('Si vous voulez modifier le prénom tapez 1')
+    print('Si vous voulez modifier le télèphone tapez 2')
+    print('Si vous voulez modifier le Email tapez 3')
+    print('Si vous voulez modifier adresse tapez 4')
+    print('Si vous voulez modifier la commande en cours  tapez 5')
+    choix_de_modification=int(input('Votre choix est:'))
+    while (choix_de_modification>4) and (choix_de_modification<0):
+        choix_de_modification=int(input('Votre choix est:'))
+    for i in range(0,len(liste_employes)) :
+         for j in range (0,5) :
+             if liste_employes[i][j]==nom_du_employe:
+                 if choix_de_modification==0:
+                     Nom=input('donner le nom :')
+                     liste_employes[i][0]=Nom
+                     print('employé modifié est devenu:',liste_employes[i])
+                 elif choix_de_modification==1:
+                     prenom=input('donner le prénom :')
+                     liste_employes[i][1]=prenom
+                     print('employé modifié est devenu:',liste_employes[i])
+                 elif choix_de_modification==2:
+                     Telephone=(input('Donner le télèphone :'))
+                     while len(Telephone)!=8:
+                         Telephone=(input('Donner le télèphone  :'))
+                     liste_employes[i][2]=Telephone
+                     print('employé modifié est devenu:',liste_employes[i])
+                 elif choix_de_modification==3:
+                     Email=input('Donner le email  :')
+                     
+                     verif=Email.find('@')
+                     while verif==-1:
+                         Email=input('Donner le email  :')
+                         verif=Email.find('@')
+                     liste_employes[i][3]=Email
+                     print('employé modifié est devenu:',liste_employes[i])
+                 elif choix_de_modification==4:
+                     Adresse=input('adresse :')
+                     liste_employes[i][4]=Adresse
+                     print('employé modifié est devenu:',liste_employes[i])
+    if len(liste_employes)!=0:
+        print('La liste des employés aprés modification:',liste_employes)
+    else:
+            print('Nom inexixstant')
+    f=open('RH.txt','w')
+    f.write("l'employé modifié est devenu:")
+    f.write(str(liste_employes[i]))
+    f.write('\n')
+    f = open('RH.txt','r')
+    f.close()
+   
+   
+   
+   
+def ajouter_un_employe(liste_employes):
+    n=int(input("Combien d'employés vous voulez ajoutez: "))
+    while n<=0:
+        n=int(input("Combien d'employés vous voulez ajoutez: "))
+    for i in range(0,1) :
+        Li=[]
+        for j in range (0,1) :
+            Nom=input('Donner le nom à ajoutez :')
+            Prenom=input('Donner le prénom à ajoutez :')
+            Telephone=(input('Donner le télèphone à ajouter :'))
+            while len(Telephone)!=8:
+                Telephone=(input('Donner le télèphone  à ajouter :'))
+            Email=input('Donner le email à ajouter :')
+           
+            verif=Email.find('@')
+            while verif==-1:
+                Email=input('Donner le email à ajouter :')
+                verif=Email.find('@')
+            Adresse=input("Donner l'adresse à ajouter :")
+            Li.append(Nom)
+            Li.append(Prenom)
+            Li.append(Telephone)
+            Li.append(Email)
+            Li.append(Adresse)
+            print(Li)
+        liste_employes.append(Li)
+        print('la liste employés aprés ajout est devenu :',liste_employes)
+    f=open('RH.txt','a')
+    f.write('la liste employés aprés ajout est devenu:')
+    f.write(str(liste_employes))
+    f.write('\n')
+    f = open('RH.txt','r')
+    f.close()
+   
+   
+def supprimer_un_employe(liste_employes):
+    import numpy as np
+    print('donner le nom du employé ')
+    nom_du_employe=input('donner le nom cherché :')
+    for i in range(0,len(liste_employes)) :
+         for j in range (0,5) :
+             if liste_employes[i][j]==nom_du_employe:
+                   liste_employes_del = np.delete(liste_employes,i,0)
+    if len(liste_employes)!=0:
+         print('la liste aprés suppresssion est devenu:',liste_employes_del)
+    else:
+        print('Nom introuvable')
+    f=open('RH.txt','a')
+    f.write('liste employés avant suppresion:')
+    f.write(str(liste_employes))
+    f.write('\n')
+    f.write('la liste employés aprés suppresssion est devenu:')
+    f.write(str(liste_employes_del))
+    f.write('\n')
+    f = open('RH.txt','r')
+    f.close()
+
+def RH_principale():
+    choix='a'
+    while choix!='v' and choix!='f' and choix!='m' and choix!='s':
+          print('Si vous voulez continuez tapez v')
+          print('Si vous voulez sortir tapez f')
+          print('Si vous voulez choisir un employé m')
+          print('Si vous voulez supprimer un employé tapez s')
+          choix=input('donner votre choix: ')
+    if choix=='v':
+        ajouter_un_employe(liste_employes)
+        RH_principale()
+    elif choix=='f':
+        print('fin')
+    elif choix=='m':
+        ressource_humaine()
+        RH_principale()
+    elif choix=='s':
+        supprimer_un_employe(liste_employes)
+        RH_principale()
+
+
+#Def safa
+
+def Gestion_de_caisse(chiffre_affaire,dépenses,nombre_articles,remises,réglement_de_fiscalité,bénéfices):
+    print("chiffre d'affaire= ",chiffre_affaire)
+    print("dépenses= ",dépenses)
+    print("nombre d'articles vendus= ",nombre_articles)
+    print("les remises= ",remises)
+    print("réglement de fiscalité",réglement_de_fiscalité)
+    print("bénéfices",bénéfices)
+    print ("si vous voulez modifier le chiffre d'affaire tapez 1")
+    print ("si vous voulez modifier les dépenses tapez 2")
+    print ("si vous voulez modifier le nombre d'articles tapez 3")
+    print ("si vous voulez modifier les remises tapez 4")
+    print ("si vous voulez modifier le réglement de fiscalité tapez 5")
+    print ("si vous voulez modifier les bénéfices tapez 6")
+
+
+def modifier_tableau(T):
+    mois=(int(input("vous voulez modifier le paramètre de quel mois ?(veuilez insérer le nombre correspondant du mois: ")))
+    while mois>12:
+        mois=(int(input("vous voulez modifier le paramètre de quel mois ?(veuilez insérer le nombre correspondant du mois: ")))
+        
+    
+    T[mois-1]=int(input("donner la nouvelle valeur: "))
+    print(T)
+
+
+def principale_caisse():
+     choix='a'
+     # choix=input('fin= f, continuer=v,modifier=m,supprimer=s')
+     while choix!='v' and choix!='f' and choix!='c'  :
+          print('si vous voulez continuer tapez v')
+          print('si vous voulez quittez tapez f')
+          print('si vous voulez consulter les courbes tapez c')
+          choix=input('donner votre choix ')
+          while choix!='v'and choix!='c'and choix!='f':
+              choix=input('donner votre choix ')
+              
+     if choix=='v':
+        choixGC=(int(input("donner votre choix: ")))
+        while choixGC!=1 and choixGC!=2 and choixGC!=3 and choixGC!=4 and choixGC!=5 and choixGC!=6 :
+               choixGC=(int(input("donner votre choix: ")))
+        if choixGC==1:
+             modifier_tableau(chiffre_affaire)
+        if choixGC==2:
+             modifier_tableau(dépenses)
+        if choixGC==3:
+             modifier_tableau(nombre_articles)
+        if choixGC==4:
+             modifier_tableau(remises)
+        if choixGC==5:
+             modifier_tableau(réglement_de_fiscalité)
+        elif choixGC==6:
+             modifier_tableau(bénéfices)
+        Gestion_de_caisse(chiffre_affaire,dépenses,nombre_articles,remises,réglement_de_fiscalité,bénéfices)
+        f=open('caisse.txt','a')
+        f.write('Les élèments de caisse sont:')
+        f.write('\n')
+        f.write("chiffre d'affaire:")
+        f.write(str(chiffre_affaire))
+        f.write('\n')
+        f.write('dépenses:')
+        f.write(str(dépenses))
+        f.write('\n')
+        f.write("nombre d'articles:")
+        f.write(str(nombre_articles))
+        f.write('\n')
+        f.write('remises:')
+        f.write(str(remises))
+        f.write('\n')
+        f.write('réglement de fiscalité:')
+        f.write(str(réglement_de_fiscalité))
+        f.write('\n')
+        f.write('bénéfices:')
+        f.write(str(bénéfices))
+        f.write('\n')
+        f = open('caisse.txt','r')
+        f.close()
+
+        principale_caisse()
+     
+        
+     
+        
+     elif choix=='f':
+            print('fin')
+     
+        
+     
+        
+     
+        
+     elif choix=='c':
+         import matplotlib.pyplot as plt
+         consulter_les_courbes=input('vous voulez consulter: ')
+         if consulter_les_courbes=='v':
+
+                   x=les_mois_pour_la_courbes
+                   y=dépenses
+                   y1=bénéfices
+                   plt.xlabel('mois')
+                   plt.plot(x,y,"g", label="dépenses")
+                   plt.plot(x,y1,"b", label="bénéfices", linestyle='-.')
+                   plt.xlabel("mois")
+                   plt.ylabel("chiffre")
+                   plt.title("courbe de comparaison bénéfices/dépenses")
+                   plt.legend()
+                   plt.show()
+                   
+                   plt.hist(chiffre_affaire,bins=12,color = 'yellow',edgecolor='black')
+                   plt.xlabel("chiffre d'affaire")
+                   plt.ylabel("fréquence chiffre d'affaire")
+                   plt.show()
+         principale_caisse()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+identifiant_admin=705478963384
+mdp_admin='Ft24Ki5LS'
+connexion_admin={}
+while connexion_admin=={}:
+    identifiant_premier=int(input("insérer l'identifiant donnée avec l'application: "))
+    while identifiant_premier!=identifiant_admin:
+        identifiant_premier=int(input("insérer l'identifiant donnée avec l'application: "))
+    mdp_premier=input("donner le mot de passe donnée avec l'application: ")
+    while mdp_premier!=mdp_admin:
+        mdp_premier=input("donner le mot de passe donnée avec l'application: ")
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    print("Bienvenue sur votre application PharmaCity ")
+    print('pour initier comme administrateur vous devez modifier votre identifiant et mot de passe afin de garantir la sécurité de vos infomrations')
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    identifiant_admin=int(input("donner votre nouveau identifiant: "))
+    mdp_admin=input("donner votre nouveau mot de passe: ")
+    confirm_mdp_admin=input("confirmer votre nouveau mot de passe: ")
+    while confirm_mdp_admin!=mdp_admin:
+        confirm_mdp_admin=input("confirmer votre nouveau mot de passe: ")
+    connexion_admin[identifiant_admin]=mdp_admin 
+    print('----------------------------------------------------------------------------------------')
+    # activation de l'application
+    # personnalisation du compte administrateur
+    
+    # ajout des comptes employée
+    print("vous devez ajouter au moins un employé: ")
+    print('----------------------------------------------------------------------------------------')
+    nombre_employee=int(input("donner le nombre d'employe que vous voulez ajouter: "))
+    for i in range(0,nombre_employee):
+        nom_employe=input("donner votre nom: ")
+
+        prénom_employe=input("donner votre prénom: ")
+
+        num_telephone=(input("donner votre numéro de téléphone: "))
+
+        while len(num_telephone)!=8:
+          num_telephone=(input("donner votre numéro de téléphone: "))
+
+        adresse_email_employe=input("donner votre adresse e-mail: ")
+        verif=adresse_email_employe.find('@')
+        while verif==-1:
+            adresse_email_employe=input("donner votre adresse e-mail: ")
+            verif=adresse_email_employe.find('@')
+        acces=input('donner le module avec lequel il va travailler(client/Rh et fournisseur/ stock/ caisse): ')
+        while acces.upper()!="CLIENT" and acces.upper()!="RH ET FOURNISSEUR" and acces.upper()!="STOCK" and acces.upper()!="CAISSE":
+                    acces=input('donner le module avec lequel il va travailler(client/Rh et fournisseur/ stock/ caisse): ')
+        
+        else:
+        
+            identifiant_employe=int(input("donner votre nouveau identifiant: "))
+
+            mdp_employe=input("donner votre nouveau mot de passe: ")
+
+        confirm_mdp_employe=input("confirmer votre nouveau mot de passe: ")
+        while confirm_mdp_employe!=mdp_employe:
+            confirm_mdp_employe=input("confirmer votre nouveau mot de passe: ")
+        
+            
+        liste_Employe={}
+        connexion_employe={}
+        liste_Employe[(identifiant_employe,mdp_employe)]=[nom_employe,prénom_employe,num_telephone,adresse_email_employe,acces]
+        connexion_employe[identifiant_employe]=mdp_employe
+        f=open('paramètre Login.txt','a')
+        f.write('Liste des employés pour les coordonnées suivants')
+        f.write(str(liste_Employe))
+        f.write('\n')
+        f.write('identifiant et mot de passe administrateur est: ')
+        f.write(str(connexion_admin))
+        f.write('\n')
+        f = open('paramètre Login.txt','r')
+        f.close()
+print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')    
+print("vos premiers pas dans Pharmacity on été effectué avec succès ")
+print('veuillez vous connecter pour verrifier votre insciption')
+print('si vous etes administrateur tapez 1 pour vous connectez')
+print('si vous etes un employer tapez 2: ')
+admin_employe=int(input(' donner votre choix'))
+while admin_employe!=1 and admin_employe!=2:
+    admin_employe=int(input('donner votre choix '))
+
+if admin_employe==1:
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    identifiant_connexion=int(input("donner votre identifiant"))
+    while connexion_employe.get(identifiant_connexion)==None and connexion_admin.get(identifiant_connexion)==None :
+        print('identifiant introuvable')
+        identifiant_connexion=int(input("donner votre identifiant"))    
+    mdp_connexion=input("donner votre mot de passe")
+    while mdp_admin != connexion_admin[identifiant_connexion]: 
+    
+                print("oups!")
+                print("mot de passe incorrecte")
+                print("veuillez réessayer à nouveau")
+                mdp_connexion=input("donner votre mot de passe")
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+    print("Bienvenue à ParmaCity")
+    print("si vous voulez entrer le module gestion de stock tapez 1 ")
+    print("si vous voulez entrer le module gestion de client tapez 2 ")
+    print("si vous voulez enter le module gestion de Rh et fournisseurs tapez 3 ")
+    print("si vous voulez entrer le module de gestion de caisse tapez 4 ")
+    choix_admin=int(input(" donnez votre choix: "))
+    while choix_admin!=1 and choix_admin!=2 and choix_admin!=3 and choix_admin!=4:
+          print("si vous voulez entrer le module gestion de stock tapez 1 ")
+          print("si vous voulez entrer le module gestion de client tapez 2 ")
+          print("si vous voulez enter le module gestion de Rh et fournisseurs tapez 3 ")
+          print("si vous voulez entrer le module de gestion de caisse tapez 4 ")
+          choix_admin=int(input(" donnez votre choix: "))
+          
+    else:
+          if choix_admin==1:
+              Date=[]
+              libelle=[]
+              stock_entrant=[]
+              montant_entrant=[]
+              stock_sortant=[]
+              montant_sortant=[]
+              position=0
+              choix_date=0
+              choix_libelle=0
+
+
+
+
+              Gestion_de_stock(Date,libelle,stock_entrant,montant_entrant,stock_sortant,montant_sortant)
+
+              choix_gestion_stock=(int(input("donner votre choix: ")))
+               
+              while (choix_gestion_stock>6)and (choix_gestion_stock==0):
+                   choix_gestion_stock=(int(input("donner votre choix: ")))
+
+              if choix_gestion_stock==1:
+                   remplir_tableau_date(Date)
+                   
+              if choix_gestion_stock==2:
+                   remplir_tableau_en_nom(libelle)
+              if choix_gestion_stock==3:
+                   remplir_tableau_en_nom(stock_entrant)
+              if choix_gestion_stock==4:
+                   remplir_tableau_en_chiffre(montant_entrant)
+              if choix_gestion_stock==5:
+                   remplir_tableau_en_nom(stock_sortant)
+              elif choix_gestion_stock==6:
+                   remplir_tableau_en_chiffre(montant_sortant)
+
+              principale_stock()
+          elif choix_admin==2:
+             Clients=[]
+             TVA=[]
+             Articles=[]
+             Referance=[]
+             Quantite=[]
+             Prix_unitaire=[]
+             Mode_de_reglement=[]
+             choix_client=0
+             liste_client=[]
+
+             print('Si vous consultez la liste des clients tapez 0')
+             print('Si vous voulez choisir un client  tapez 1')
+             print('Si vous voulez entrer dans la commande du client tapez 2')
+             print('Si vous voulez ajouter un client  tapez 3')
+             print('Si vous voulez supprimer un client  tapez 4')
+             print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+             choix_globale=int(input('Votre choix est:'))
+             while  (choix_globale>4) and (choix_globale<0) :
+                 choix_globale=int(input('Votre choix est:'))
+             if choix_globale==0:
+                 print('Liste des clients est',liste_client)
+                 f=open('client.txt','a')
+                 f.write('Liste des clients est')
+                 f.write(str(liste_client))
+                 f.write('\n')
+                 f= open ('client.txt', 'r')
+                 f.close()
+                 client_principale()
+             elif choix_globale==1:
+                 client(liste_client)
+                 client_principale()
+             elif choix_globale==2:
+                 Commande_client(Clients,TVA,Articles,Referance,Quantite,Prix_unitaire,Mode_de_reglement)
+                 principale_c_c()
+             elif choix_globale==3:
+                 ajoutez_un_client(liste_client)
+                 client_principale()
+             elif choix_globale==4:
+                 supprimer_un_client(liste_client)
+                 client_principale()
+             
+          elif choix_admin==3:
+              fournisseurs=[]
+              TVA=[]
+              Articles=[]
+              Referance=[]
+              Quantite=[]
+              Prix_unitaire=[]
+              Mode_de_reglement=[]
+              choix_fournisseur=0
+              liste_fournisseurs=[]
+              choix_c=0
+              print('si vous voulez consultez le module fournisseur tapez 1 ')
+              print('si vous voulez consultez le module Ressource Humaine tapez 2')
+              choix_c=int(input("donner votre choix"))
+              while choix_c!=1 and choix_c!=2:
+                  choix_c=int(input("donner votre choix"))
+              if choix_c==1:
+                  print('Si vous consultez la liste des fournisseurs tapez 0')
+                  print('Si vous voulez choisir un fournisseur  tapez 1')
+                  print('Si vous voulez entrer dans la commande du fournisseur tapez 2')
+                  print('Si vous voulez ajouter un fournisseur  tapez 3')
+                  print('Si vous voulez supprimer un fournisseur tapez 4')
+                  print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+                  choix_globale=int(input('Votre choix est:'))
+                  while (choix_globale>4) and (choix_globale<0) :
+                      choix_globale=int(input('Votre choix est:'))
+                  if choix_globale==0:
+                      liste_fournisseurs=[]
+                      print('Liste des fournisseurs est',liste_fournisseurs)
+                      f=open('fournisseur.txt','a')
+                      f.write('Liste des fournisseurs est')
+                      f.write(str(liste_fournisseurs))
+                      f.write('\n')    
+                      f= open ('fournisseur.txt', 'r')
+                      f.close()
+                      fs_principale()
+                  elif choix_globale==1:
+                      fournisseur()
+                      fs_principale()
+                  elif choix_globale==2:
+                      Commande_fournisseur(fournisseurs,TVA,Articles,Referance,Quantite,Prix_unitaire,Mode_de_reglement)
+                      principale_c_f()
+                  elif choix_globale==3:
+                      ajouter_fournisseur(liste_fournisseurs)
+                      fs_principale()
+                  elif choix_globale==4:
+                      supprimer_fournisseur(liste_fournisseurs)
+                      fs_principale()
+              elif choix_c==2:
+                  liste_employes=[]
+                  print('Si vous consultez la liste des employés tapez 0')
+                  print('Si vous voulez choisir un employe  tapez 1')
+                  print('Si vous voulez ajouter un employé  tapez 2')
+                  print('Si vous voulez supprimer un employé tapez 3')
+                  print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+                  choix_globale=int(input('Votre choix est:'))
+                  while (choix_globale>3) and (choix_globale<0) :
+                      choix_globale=int(input('Votre choix est:'))
+                  if choix_globale==0:
+                      liste_employes=[]    
+                      print('Liste des employés est',liste_employes)
+                      f=open('pp.txt','a')
+                      f.write('Liste des employés est')
+                      f.write(str(liste_employes))
+                      f.write('\n')
+                      f=open ('RH.txt', 'r')    
+                      f.close()
+                      RH_principale()
+                  elif choix_globale==1:
+                      ressource_humaine()
+                      RH_principale()
+                  elif choix_globale==2:
+                      ajouter_un_employe(liste_employes)
+                      RH_principale()
+                  elif choix_globale==3:
+                      supprimer_un_employe(liste_employes)
+                      RH_principale()
+          elif choix_admin==4:
+              
+
+              choixGC=''
+              mois=''
+              choix=' '
+              les_mois_pour_la_courbes=('jan','fév','mars','avr','mai','juin','juil','août','sep','oct','nov','déc')
+              chiffre_affaire=[0,0,0,0,0,0,0,0,0,0,0,0]    
+              dépenses=[0,0,0,0,0,0,0,0,0,0,0,0] 
+              nombre_articles=[0,0,0,0,0,0,0,0,0,0,0,0] 
+              remises=[0,0,0,0,0,0,0,0,0,0,0,0] 
+              réglement_de_fiscalité=[0,0,0,0,0,0,0,0,0,0,0,0] 
+              bénéfices=[0,0,0,0,0,0,0,0,0,0,0,0] 
+
+              Gestion_de_caisse(chiffre_affaire,dépenses,nombre_articles,remises,réglement_de_fiscalité,bénéfices)#j'ai fais appel à la procédure
+
+              choixGC=(int(input("donner votre choix: ")))
+              while choixGC!=1 and choixGC!=2 and choixGC!=3 and choixGC!=4 and choixGC!=5 and choixGC!=6 :
+                      choixGC=(int(input("donner votre choix: ")))
+              if choixGC==1:
+                  modifier_tableau(chiffre_affaire)
+              if choixGC==2:
+                  modifier_tableau(dépenses)
+              if choixGC==3:
+                  modifier_tableau(nombre_articles)
+              if choixGC==4:
+                  modifier_tableau(remises)
+              if choixGC==5:
+                  modifier_tableau(réglement_de_fiscalité)
+              elif choixGC==6:
+                  modifier_tableau(bénéfices)
+
+                  
+
+
+              principale_caisse()
+                
+if admin_employe==2:
+    identifiant_connexion=int(input("donner votre identifiant: "))
+    while connexion_employe.get(identifiant_connexion)==None and connexion_admin.get(identifiant_connexion)==None :
+        print('identifiant introuvable')
+        identifiant_connexion=int(input("donner votre identifiant: "))    
+    mdp_connexion=input("donner votre mot de passe: ")
+    while connexion_employe[identifiant_connexion]!=mdp_connexion: 
+
+                print("oups!")
+                print("mot de passe incorrecte")
+                print("veuillez réessayer à nouveau")
+                mdp_connexion=input("donner votre mot de passe: ")
+
+    print('bienvenue cher employé')
+    print('--------------------------------------------------------------------------------------')
+    if (liste_Employe[(identifiant_connexion,mdp_connexion)][4]).upper()=="STOCK":
+        Date=[]
+        libelle=[]
+        stock_entrant=[]
+        montant_entrant=[]
+        stock_sortant=[]
+        montant_sortant=[]
+        position=0
+        choix_date=0
+        choix_libelle=0
+
+
+
+
+        Gestion_de_stock(Date,libelle,stock_entrant,montant_entrant,stock_sortant,montant_sortant)
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        choix_gestion_stock=(int(input("donner votre choix: ")))
+         
+        while (choix_gestion_stock>6)and (choix_gestion_stock==0):
+             choix_gestion_stock=(int(input("donner votre choix: ")))
+
+        if choix_gestion_stock==1:
+             remplir_tableau_date(Date)
+             
+        if choix_gestion_stock==2:
+             remplir_tableau_en_nom(libelle)
+        if choix_gestion_stock==3:
+             remplir_tableau_en_nom(stock_entrant)
+        if choix_gestion_stock==4:
+             remplir_tableau_en_chiffre(montant_entrant)
+        if choix_gestion_stock==5:
+             remplir_tableau_en_nom(stock_sortant)
+        elif choix_gestion_stock==6:
+             remplir_tableau_en_chiffre(montant_sortant)
+        f=open('stock.txt','a')
+        f.write('fiche de stock est:')
+        f.write('\n')
+        f.write("Date:")
+        f.write(str(Date))
+        f.write('\n')
+        f.write('libelle:')
+        f.write(str(libelle))
+        f.write('\n')
+        f.write('stock entrant:')
+        f.write(str(stock_entrant))
+        f.write('\n')
+        f.write('montant_entrant:')
+        f.write(str(montant_entrant))
+        f.write('\n')
+        f.write('stock_sortant:')
+        f.write(str(stock_sortant))
+        f.write('\n')
+        f.write('montant_sortant:')
+        f.write(str(montant_sortant))
+        f.write('\n')
+        f = open('stock.txt','r')
+        f.close()
+
+        principale_stock()
+    
+    if (liste_Employe[(identifiant_connexion,mdp_connexion)][4]).upper()=="CLIENT":
+      Clients=[]
+      TVA=[]
+      Articles=[]
+      Referance=[]
+      Quantite=[]
+      Prix_unitaire=[]
+      Mode_de_reglement=[]
+      choix_client=0
+      liste_client=[]
+
+      print('Si vous consultez la liste des clients tapez 0')
+      print('Si vous voulez choisir un client  tapez 1')
+      print('Si vous voulez entrer dans la commande du client tapez 2')
+      print('Si vous voulez ajouter un client  tapez 3')
+      print('Si vous voulez supprimer un client  tapez 4')
+      print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+      choix_globale=int(input('Votre choix est:'))
+      while  (choix_globale>4) and (choix_globale<0) :
+          choix_globale=int(input('Votre choix est:'))
+      if choix_globale==0:
+          print('Liste des clients est ',liste_client)
+          f=open('client.txt','a')
+          f.write('Liste des clients est z')
+          f.write(str(liste_client))
+          f.write('\n')
+          f= open ('client.txt', 'r')
+          f.close()
+          client_principale()
+      elif choix_globale==1:
+          client(liste_client)
+          client_principale()
+      elif choix_globale==2:
+          Commande_client(Clients,TVA,Articles,Referance,Quantite,Prix_unitaire,Mode_de_reglement)
+          principale_c_c()
+      elif choix_globale==3:
+          ajoutez_un_client(liste_client)
+          client_principale()
+      elif choix_globale==4:
+          supprimer_un_client(liste_client)
+          client_principale()
+   
+    elif (liste_Employe[(identifiant_connexion,mdp_connexion)][4]).upper()=="RH ET FOURNISSEUR":
+              fournisseurs=[]
+              TVA=[]
+              Articles=[]
+              Referance=[]
+              Quantite=[]
+              Prix_unitaire=[]
+              Mode_de_reglement=[]
+              choix_fournisseur=0
+              liste_fournisseurs=[]
+              choix_c=0
+              print('si vous voulez consultez le module fournisseur tapez 1 ')
+              print('si vous voulez consultez le module Ressource Humaine tapez 2')
+              print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+              choix_c=int(input("donner votre choix"))
+              while choix_c!=1 and choix_c!=2:
+                  choix_c=int(input("donner votre choix"))
+              if choix_c==1:
+                  print('Si vous consultez la liste des fournisseurs tapez 0')
+                  print('Si vous voulez choisir un fournisseur  tapez 1')
+                  print('Si vous voulez entrer dans la commande du fournisseur tapez 2')
+                  print('Si vous voulez ajouter un fournisseur  tapez 3')
+                  print('Si vous voulez supprimer un fournisseur tapez 4')
+                  print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+                  choix_globale=int(input('Votre choix est:'))
+                  while (choix_globale>4) and (choix_globale<0) :
+                      choix_globale=int(input('Votre choix est:'))
+                  if choix_globale==0:
+                      liste_fournisseurs=[]
+                      print('Liste des fournisseurs est',liste_fournisseurs)
+                      f=open('fournisseur.txt','a')
+                      f.write('Liste des fournisseurs est')
+                      f.write(str(liste_fournisseurs))
+                      f.write('\n')    
+                      f= open ('fournisseur.txt', 'r')
+                      f.close()
+                      fs_principale()
+                  elif choix_globale==1:
+                      fournisseur()
+                      fs_principale()
+                  elif choix_globale==2:
+                      Commande_fournisseur(fournisseurs,TVA,Articles,Referance,Quantite,Prix_unitaire,Mode_de_reglement)
+                      principale_c_f()
+                  elif choix_globale==3:
+                      ajouter_fournisseur(liste_fournisseurs)
+                      fs_principale()
+                  elif choix_globale==4:
+                      supprimer_fournisseur(liste_fournisseurs)
+                      fs_principale()
+   
+    elif (liste_Employe[(identifiant_connexion,mdp_connexion)][4]).upper()=="CAISSE":
+        
+
+        choixGC=''
+        mois=''
+        choix=' '
+        les_mois_pour_la_courbes=('jan','fév','mars','avr','mai','juin','juil','août','sep','oct','nov','déc')
+        chiffre_affaire=[0,0,0,0,0,0,0,0,0,0,0,0]    
+        dépenses=[0,0,0,0,0,0,0,0,0,0,0,0] 
+        nombre_articles=[0,0,0,0,0,0,0,0,0,0,0,0] 
+        remises=[0,0,0,0,0,0,0,0,0,0,0,0] 
+        réglement_de_fiscalité=[0,0,0,0,0,0,0,0,0,0,0,0] 
+        bénéfices=[0,0,0,0,0,0,0,0,0,0,0,0] 
+
+        Gestion_de_caisse(chiffre_affaire,dépenses,nombre_articles,remises,réglement_de_fiscalité,bénéfices)#j'ai fais appel à la procédure
+
+        choixGC=(int(input("donner votre choix")))
+        while choixGC!=1 and choixGC!=2 and choixGC!=3 and choixGC!=4 and choixGC!=5 and choixGC!=6 :
+                choixGC=(int(input("donner votre choix")))
+        if choixGC==1:
+            modifier_tableau(chiffre_affaire)
+        if choixGC==2:
+            modifier_tableau(dépenses)
+        if choixGC==3:
+            modifier_tableau(nombre_articles)
+        if choixGC==4:
+            modifier_tableau(remises)
+        if choixGC==5:
+            modifier_tableau(réglement_de_fiscalité)
+        elif choixGC==6:
+            modifier_tableau(bénéfices)
+        f=open('caisse.txt','a')
+        f.write('Les élèments de caisse sont:')
+        f.write('\n')
+        f.write("chiffre d'affaire:")
+        f.write(str(chiffre_affaire))
+        f.write('\n')
+        f.write('dépenses:')
+        f.write(str(dépenses))
+        f.write('\n')
+        f.write("nombre d'articles:")
+        f.write(str(nombre_articles))
+        f.write('\n')
+        f.write('remises:')
+        f.write(str(remises))
+        f.write('\n')
+        f.write('réglement de fiscalité:')
+        f.write(str(réglement_de_fiscalité))
+        f.write('\n')
+        f.write('bénéfices:')
+        f.write(str(bénéfices))
+        f.write('\n')
+        f = open('caisse.txt','r')
+        f.close()
+
+        principale_caisse()
